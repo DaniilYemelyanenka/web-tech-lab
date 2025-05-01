@@ -1,6 +1,6 @@
 package by.bsuir.webtech.controller;
 
-import by.bsuir.webtech.ListDemo;
+import by.bsuir.webtech.Model.ListDemo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +19,10 @@ public class IndexGetController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getIndex(Model model){
+        model.addAttribute("username", "user");
         model.addAttribute("message","Лабораторная работа 2");
         model.addAttribute("listItems", items);
         return "index";
     }
+
 }

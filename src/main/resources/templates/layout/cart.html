@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a th:href=@{/cart} class="navbar-text ml-auto" th:fragment="cart" th:text="${cartInfo.totalPrice} + ' руб. (' + ${cartInfo.itemCount} + ')'">
+        00,0 руб <i class="fas fa-shopping-cart nav-color"></i> (0)
+    </a>
+</body>
+</html>

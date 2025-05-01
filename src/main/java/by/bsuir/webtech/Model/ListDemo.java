@@ -1,4 +1,4 @@
-package by.bsuir.webtech;
+package by.bsuir.webtech.Model;
 
 public class ListDemo {
     private int listItemValue;

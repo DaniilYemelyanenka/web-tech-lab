@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="dropdown ml-4 nav-color" th:fragment="user" >
+    <div class="dropdown-toggle" id="dropdownMenuButton"
+         data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false" th:if="${username != null}">
+        <img src="images/avatar.png" width="30"
+             alt="User" class="rounded" />
+    </div>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" th:if="${username != null}">
+        <div class="dropdown-item-text">
+            <img th:src=@{images/avatar.png} width="50" alt="User" class="rounded" />
+            user@mail.ru
+        </div>
+        <div class="dropdown-divider"></div>
+        <a></a>
+        <a class="dropdown-item" th:href=@{/product/{user}}>Мои товары</a>
+        <a class="dropdown-item" th:href=@{/account/logout}>Выход</a>
+    </div>
+    <div th:if="${username == null}"> <p>login</p> </div>
+</div>
+
+</body>
+</html>
