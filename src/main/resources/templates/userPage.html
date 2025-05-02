@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>webtech</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/menu.css" rel="stylesheet" />
+</head>
+<body>
+<header >
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-around mx-1">
+        <!-- меню сайта -->
+        <a class="navbar-brand" href="#">38157097</a>
+        <div   th:replace="layout/menu :: menu">
+        </div>
+        <!-- меню сайта - конец -->
+        <!-- Информация пользователя -->
+        <a th:replace="layout/cart :: cart">
+        </a>
+        <div th:replace="layout/user :: user">
+        </div>
+        <!-- Информация пользователя - конец -->
+    </nav>
+</header>
+<main  th:replace="layout/userCabinet :: cabinet">
+</main>
+<footer th:replace="layout/footer :: footer"></footer>
+</body>
+</html>

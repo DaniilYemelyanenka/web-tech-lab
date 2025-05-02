@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="dropdown ml-4 nav-color" th:fragment="cabinet" >
+    <div class="card shadow-sm mt-3" th:object="${user}">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Информация о пользователе</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Имя пользователя:</label>
+                <span th:text="*{username}" class="form-control-plaintext"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold">Пароль:</label>
+                <span th:text="*{password}" class="form-control-plaintext text-muted"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

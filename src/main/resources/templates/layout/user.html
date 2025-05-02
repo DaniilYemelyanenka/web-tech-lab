@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<div class="dropdown ml-4 nav-color" th:fragment="user" >
+<div class="dropdown ml-4 nav-color" th:fragment="user">
     <div class="dropdown-toggle" id="dropdownMenuButton"
          data-toggle="dropdown" aria-haspopup="true"
-         aria-expanded="false" th:if="${username != null}">
-        <img src="images/avatar.png" width="30"
-             alt="User" class="rounded" />
+         aria-expanded="false" sec:authorize="isAuthenticated()">
+        <img src="/images/avatar.png" width="30" alt="User" class="rounded" />
     </div>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" th:if="${username != null}">
-        <div class="dropdown-item-text">
-            <img th:src=@{images/avatar.png} width="50" alt="User" class="rounded" />
-            user@mail.ru
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" sec:authorize="isAuthenticated()">
+        <div class="dropdown-item-text text-center">
+            <img th:src="@{/images/avatar.png}" width="50" alt="User" class="rounded mb-2" />
+            <div>
+                <strong th:text="${#authentication.name}">Пользователь</strong>
+            </div>
         </div>
         <div class="dropdown-divider"></div>
-        <a></a>
-        <a class="dropdown-item" th:href=@{/product/{user}}>Мои товары</a>
-        <a class="dropdown-item" th:href=@{/account/logout}>Выход</a>
+        <a class="dropdown-item" th:href="@{/product}">Мои товары</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="dropdown-item">Выход</button>
+        </form>
     </div>
-    <div th:if="${username == null}"> <p>login</p> </div>
+
+    <div sec:authorize="isAnonymous()">
+        <a th:href="@{/login}">Войти</a> |
+        <a th:href="@{/register}">Регистрация</a>
+    </div>
 </div>
 
 </body>
