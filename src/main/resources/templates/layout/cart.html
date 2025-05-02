@@ -5,8 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-    <a th:href=@{/cart} class="navbar-text ml-auto" th:fragment="cart" th:text="${cartInfo.totalPrice} + ' руб. (' + ${cartInfo.itemCount} + ')'">
-        00,0 руб <i class="fas fa-shopping-cart nav-color"></i> (0)
-    </a>
+<a th:href="@{/cart}" class="navbar-text ml-auto" th:fragment="cart"
+   th:text="${cartInfo.totalPrice} + ' руб. (' + ${cartInfo.itemCount} + ')'">
+    00,0 руб <i class="fas fa-shopping-cart nav-color"></i> (0)
+</a>
 </body>
 </html>

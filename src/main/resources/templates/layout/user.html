@@ -9,16 +9,22 @@
     <div class="dropdown-toggle" id="dropdownMenuButton"
          data-toggle="dropdown" aria-haspopup="true"
          aria-expanded="false" sec:authorize="isAuthenticated()">
-        <img src="/images/avatar.png" width="30" alt="User" class="rounded" />
+        <img th:src="@{/user/avatar/{username}(username=${#authentication.name})}"
+             width="50" alt="User" class="rounded mb-2" />
     </div>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" sec:authorize="isAuthenticated()">
         <div class="dropdown-item-text text-center">
-            <img th:src="@{/images/avatar.png}" width="50" alt="User" class="rounded mb-2" />
+            <img th:src="@{/user/avatar/{username}(username=${#authentication.name})}"
+                 width="50" alt="User" class="rounded mb-2" />
             <div>
                 <strong th:text="${#authentication.name}">Пользователь</strong>
             </div>
         </div>
+        <form th:action="@{/user/upload-avatar}" method="post" enctype="multipart/form-data" class="dropdown-item-text text-center">
+            <input type="file" name="avatarFile" accept="image/*" class="form-control-file mb-2" required />
+            <button type="submit" class="btn btn-sm btn-secondary">Обновить аватар</button>
+        </form>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" th:href="@{/product}">Мои товары</a>
         <form th:action="@{/logout}" method="post">

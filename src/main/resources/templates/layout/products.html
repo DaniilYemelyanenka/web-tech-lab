@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container mt-5" th:fragment="products">
+    <h2 class="mb-4 text-center">Каталог товаров</h2>
+    <div class="row">
+
+        <div class="col-md-4 mb-4" th:each="product : ${productList}">
+            <div class="card shadow-sm h-100">
+                <img th:src="@{/images/{img}(img=${product.imageUrl})}" class="card-img-top" alt="Product Image">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-danger" th:text="${product.product}">Название</h5>
+                    <p class="card-subtitle mb-2 text-muted">
+                        <span class="badge badge-info" th:text="${product.count} + ' кг'">0 кг</span>
+                    </p>
+                    <a th:href="@{/cart/add(id=${product.id})}"
+                       class="btn btn-danger mt-auto">
+                        <i class="fas fa-shopping-cart"></i> В корзину
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
